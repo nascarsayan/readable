@@ -17,11 +17,6 @@ func init() {
 	initBitSizeList()
 }
 
-func Init() {
-	db.InitDB()
-	initBitSizeList()
-}
-
 func getRange(start int, end int) []string {
 	r := make([]string, end-start)
 	for i := start; i < end; i++ {
@@ -133,23 +128,4 @@ func ToUUID(readable string) (uuid.UUID, error) {
 		}
 	}
 	return uuid.FromBytes(res)
-}
-
-func testUuid2Readable() {
-	readable := New()
-	fmt.Printf("%v\n", readable.GUID)
-	fmt.Printf("%v\n", readable)
-	uuid, err := ToUUID(readable.String())
-	if err != nil {
-		panic(err)
-	}
-	fmt.Printf("%v\n", uuid)
-	uuid2 := FromUUID(uuid)
-	fmt.Printf("%v\n", uuid2)
-}
-
-func Test() {
-	for i := 0; i < 100; i++ {
-		testUuid2Readable()
-	}
 }
