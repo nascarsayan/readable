@@ -17,6 +17,11 @@ func init() {
 	initBitSizeList()
 }
 
+func Init() {
+	db.InitDB()
+	initBitSizeList()
+}
+
 func getRange(start int, end int) []string {
 	r := make([]string, end-start)
 	for i := start; i < end; i++ {
@@ -46,6 +51,13 @@ func initBitSizeList() {
 	bitSizeList = make([]int, len(schema))
 	for i, v := range schema {
 		bitSizeList[i] = int(math.Log2(float64(len(v))))
+	}
+	bitSizeTotal := 0
+	for _, v := range bitSizeList {
+		bitSizeTotal += v
+	}
+	if bitSizeTotal < 128 {
+		panic("bitSizeTotal < 128")
 	}
 }
 

@@ -7,7 +7,7 @@ import (
 )
 
 func TestGetReadableFromUUID(t *testing.T) {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 10000; i++ {
 		f := fluuid.New()
 		sentence := f.String()
 		uuid := f.GUID
