@@ -35,14 +35,18 @@ import (
 
 sentence := fluuid.New()
 fmt.Println(uid) 
-// Marylee Cyril Pammi the plagioclase of Carter pushs Nathalie Curcio Glorianna and 20 noisy alligators
+// Marylee Cyril Pammi the plagioclase of Carter pushes
+// Nathalie Curcio Glorianna and 20 noisy alligators
+
+// + Interconvert between UUID v2 and fluuid.
 
 uuid := guid.New()
 fmt.Println(uuid)
 // a8b9d106-9ad5-4111-9693-bbe7c5a5ee86
 sentence = fluuid.FromUUID(uuid)
 fmt.Println(sentence)
-// Kaye Fabio Groveman the lift of Allegre punched Blondie Dieter Lorilyn and 17 quiet snakes
+// Kaye Fabio Groveman the lift of Allegre 
+// punched Blondie Dieter Lorilyn and 17 quiet snakes
 
 hex, err := fluuid.ToUUID(sentence)
 if err != nil {
@@ -63,10 +67,14 @@ import (
   "github.com/nascarsayan/fluuid"
 )
 
-sentence, err := fluuid.FromUUID(guid.New())
+long := fluuid.New()
+fmt.Println(long)
+// Abbe Gardener Alayne the sportsman of Cambria
+// doubles Angelina Blake Canty and 18 healthy ants
+short, err := fluuid.Smol(long)
 if err != nil {
   fmt.Errorf("error converting uuid to smol: %v", err)
 }
-fmt.Println(sentence)
-// 43 weak rats judgementally felt
+fmt.Println(short)
+// 25 bad crows fast sang
 ```
