@@ -9,16 +9,17 @@ import (
 
 var uid32 *Converter
 
+// InitUID32 initializes the uid32 converter.
 func InitUID32() {
 	schema := [][]string{
 		getRange(2, 66),
 		db.Data.Animals.Adjective,
 		db.Data.Animals.Noun,
-		db.Data.Grammer.Adverb,
+		db.Data.Grammar.Adverb,
 		db.Data.Animals.Verb,
 	}
 	bitSizeList := computeBitSizeList(schema)
-	// bitSizeList = []int{12, 11, 14, 0, 13, 0, 13, 10, 12, 11, 14, 0, 5, 6, 7}
+	// bitSizeList = []int{6, 6, 7, 8, 5}
 	uid32 = &Converter{&schema, &bitSizeList}
 }
 
@@ -33,6 +34,7 @@ func createHash(u uuid.UUID) [4]byte {
 	return bytes
 }
 
+// Smol returns a 32-bit hash of the given fluuid.
 func Smol(fluuid string) (string, error) {
 	b := make([]byte, 16)
 	err := uid128.Unmarshal(fluuid, &b)
@@ -47,11 +49,13 @@ func Smol(fluuid string) (string, error) {
 	return SmolFromUUID(*u)
 }
 
+// SmolFromUUID returns a 32-bit hash of the given uuid.
 func SmolFromUUID(u uuid.UUID) (string, error) {
 	hash := createHash(u)
 	return uid32.Marshal(hash[:])
 }
 
+// VerifySmolWithFluuid verifies that the given smol is the 32-bit hash of the given fluuid.
 func VerifySmolWithFluuid(smol string, fluuid string) bool {
 	smol2, err := Smol(fluuid)
 	if err != nil {
@@ -60,6 +64,7 @@ func VerifySmolWithFluuid(smol string, fluuid string) bool {
 	return smol == smol2
 }
 
+// VerifySmolWithUUID verifies that the given smol is the 32-bit hash of the given uuid.
 func VerifySmolWithUUID(smol string, u uuid.UUID) bool {
 	smol2, err := SmolFromUUID(u)
 	if err != nil {

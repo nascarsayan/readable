@@ -7,16 +7,17 @@ import (
 
 var uid128 *Converter
 
+// InitUID128 initializes the fluuid package.
 func InitUID128() {
 	schema := [][]string{
 		db.Data.Name.First,
 		db.Data.Name.Middle,
 		db.Data.Name.Last,
 		{"the"},
-		db.Data.Grammer.PersonalNoun,
+		db.Data.Grammar.PersonalNoun,
 		{"of"},
 		db.Data.Place,
-		db.Data.Grammer.Verb,
+		db.Data.Grammar.Verb,
 		db.Data.Name.First,
 		db.Data.Name.Middle,
 		db.Data.Name.Last,
@@ -30,6 +31,7 @@ func InitUID128() {
 	uid128 = &Converter{&schema, &bitSizeList}
 }
 
+// New returns a new fluuid.
 func New() (string, error) {
 	u := uuid.New()
 	b, err := u.MarshalBinary()
@@ -39,6 +41,7 @@ func New() (string, error) {
 	return uid128.Marshal(b)
 }
 
+// ToUUID converts a fluuid to a uuid.
 func ToUUID(fluuid string) (*uuid.UUID, error) {
 	b := make([]byte, 16)
 	err := uid128.Unmarshal(fluuid, &b)
@@ -53,6 +56,7 @@ func ToUUID(fluuid string) (*uuid.UUID, error) {
 	return u, nil
 }
 
-func FromUUID(u *uuid.UUID) (string, error) {
+// FromUUID converts a uuid to a fluuid.
+func FromUUID(u uuid.UUID) (string, error) {
 	return uid128.Marshal(u[:])
 }

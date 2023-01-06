@@ -10,7 +10,7 @@ import (
 func TestInterconversion(t *testing.T) {
 	for i := 0; i < 10000; i++ {
 		uuid := guid.New()
-		sentence, err := fluuid.FromUUID(&uuid)
+		sentence, err := fluuid.FromUUID(uuid)
 		if err != nil {
 			t.Errorf("error converting uuid to sentence: %v", err)
 		}
@@ -18,6 +18,8 @@ func TestInterconversion(t *testing.T) {
 		if err != nil {
 			t.Errorf("error converting sentence to uuid: %v", err)
 		}
+		uuidStr := uuid.String()
+		_ = uuidStr
 		if uuid != *uuidExpected {
 			t.Errorf("uuids are not equal: %v != %v. Sentence is: %v", uuid, uuidExpected, sentence)
 		}

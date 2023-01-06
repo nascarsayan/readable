@@ -1,3 +1,4 @@
+// Package fluuid provides a way to convert a byte array to a fluuid string and vice versa.
 package fluuid
 
 import (
@@ -5,19 +6,21 @@ import (
 	"strings"
 )
 
+// Converter is a struct that converts a byte array to a fluuid string and vice versa.
 type Converter struct {
 	schema      *[][]string
 	bitSizeList *[]int
 }
 
+// Marshal converts a byte array to a fluuid string.
 func (s *Converter) Marshal(data []byte) (string, error) {
 	res := ""
 	bitIdx, byteIdx := 0, 0
 	nextChunk := func(bitSize int) int {
 		r := 0
 		for i := 0; i < bitSize; i++ {
-			r = r << 1
-			r = r | (int(data[byteIdx]) >> (7 - bitIdx) & 1)
+			r <<= 1
+			r |= (int(data[byteIdx]) >> (7 - bitIdx) & 1)
 			bitIdx++
 			if bitIdx == 8 {
 				byteIdx++
@@ -36,9 +39,10 @@ func (s *Converter) Marshal(data []byte) (string, error) {
 	if byteIdx != len(data) {
 		return "", fmt.Errorf("data too large to convert to fluuid")
 	}
-	return string(res), nil
+	return res, nil
 }
 
+// Unmarshal converts a fluuid string to a byte array.
 func (s *Converter) Unmarshal(sent string, bytes *[]byte) error {
 	if s == nil || s.schema == nil || s.bitSizeList == nil {
 		return fmt.Errorf("Converter not initialized properly")
@@ -54,8 +58,8 @@ func (s *Converter) Unmarshal(sent string, bytes *[]byte) error {
 			return fmt.Errorf("word not found in database: %s", words[i])
 		}
 		for j := 0; j < (*s.bitSizeList)[i]; j++ {
-			currentByte = currentByte << 1
-			currentByte = currentByte | (idx >> ((*s.bitSizeList)[i] - j - 1) & 1)
+			currentByte <<= currentByte
+			currentByte |= idx >> ((*s.bitSizeList)[i] - j - 1) & 1
 			bitIdx++
 			if bitIdx == 8 {
 				(*bytes)[byteIdx] = byte(currentByte)

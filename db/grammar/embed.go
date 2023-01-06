@@ -1,4 +1,5 @@
-package grammer
+// Package grammar is the database of grammar.
+package grammar
 
 import (
 	_ "embed"
@@ -17,15 +18,17 @@ var personalNouns string
 //go:embed verb.json
 var verbs string
 
-type Grammers struct {
+// Grammars is a struct containing all the grammars.
+type Grammars struct {
 	Adjective    []string
 	Adverb       []string
 	PersonalNoun []string
 	Verb         []string
 }
 
-func GetGrammers() Grammers {
-	var grammars Grammers
+// GetGrammers returns the Grammars struct.
+func GetGrammers() Grammars {
+	var grammars Grammars
 	_ = json.Unmarshal([]byte(adjectives), &grammars.Adjective)
 	_ = json.Unmarshal([]byte(adverbs), &grammars.Adverb)
 	_ = json.Unmarshal([]byte(personalNouns), &grammars.PersonalNoun)
