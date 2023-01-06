@@ -8,7 +8,7 @@ import (
 )
 
 func TestInterconversion(t *testing.T) {
-	for i := 0; i < 1; i++ {
+	for i := 0; i < 1000; i++ {
 		uuid := guid.New()
 		sentence, err := fluuid.FromUUID(uuid)
 		if err != nil {

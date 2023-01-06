@@ -8,7 +8,7 @@ import (
 )
 
 func TestHashVerifier(t *testing.T) {
-	for i := 0; i < 3; i++ {
+	for i := 0; i < 1000; i++ {
 		uuid := guid.New()
 		sentence, err := fluuid.FromUUID(uuid)
 		if err != nil {
@@ -30,11 +30,11 @@ func TestHashVerifier(t *testing.T) {
 func TestNewSmol(t *testing.T) {
 	sentence, err := fluuid.New()
 	if err != nil {
-		t.Errorf("error creating new smol: %v", err)
+		t.Errorf("error creating new fluuid: %v", err)
 	}
 	smol, err := fluuid.Smol(sentence)
 	if err != nil {
-		t.Errorf("error creating new smol: %v", err)
+		t.Errorf("error converting fluuid to smol: %v", err)
 	}
 	if len(smol) == 0 {
 		t.Errorf("sentence is empty")
@@ -44,7 +44,7 @@ func TestNewSmol(t *testing.T) {
 func TestNewSmolFromUUID(t *testing.T) {
 	smol, err := fluuid.SmolFromUUID(guid.New())
 	if err != nil {
-		t.Errorf("error creating new smol: %v", err)
+		t.Errorf("error converting uuid to smol: %v", err)
 	}
 	if len(smol) == 0 {
 		t.Errorf("sentence is empty")

@@ -58,7 +58,7 @@ func (s *Converter) Unmarshal(sent string, bytes *[]byte) error {
 			return fmt.Errorf("word not found in database: %s", words[i])
 		}
 		for j := 0; j < (*s.bitSizeList)[i]; j++ {
-			currentByte <<= currentByte
+			currentByte <<= 1
 			currentByte |= idx >> ((*s.bitSizeList)[i] - j - 1) & 1
 			bitIdx++
 			if bitIdx == 8 {

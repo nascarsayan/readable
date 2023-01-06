@@ -35,25 +35,25 @@ import (
 
 sentence := fluuid.New()
 fmt.Println(uid) 
-// Marylee Cyril Pammi the plagioclase of Carter pushes
-// Nathalie Curcio Glorianna and 20 noisy alligators
+// Dari Findlay Joaquin the pathos of Bandytown 
+// preserves Daisy Cletis Alarice and 29 salty hogs
 
-// + Interconvert between UUID v2 and fluuid.
+// + Interconvert between UUIDv4 and fluuid.
 
 uuid := guid.New()
 fmt.Println(uuid)
-// a8b9d106-9ad5-4111-9693-bbe7c5a5ee86
+// 92e39d12-d0a6-4953-8999-edbf85f7ad66
 sentence = fluuid.FromUUID(uuid)
 fmt.Println(sentence)
-// Kaye Fabio Groveman the lift of Allegre 
-// punched Blondie Dieter Lorilyn and 17 quiet snakes
+// Janot Boniface Harriet the contestant of Broseley 
+// preserved Carrissa Gayler Hahnert and 31 windy gnus
 
 hex, err := fluuid.ToUUID(sentence)
 if err != nil {
   fmt.Errorf("error converting fluuid to uuid: %v", err)
 }
 fmt.Println(hex)
-// a8b9d106-9ad5-4111-9693-bbe7c5a5ee86
+// 92e39d12-d0a6-4953-8999-edbf85f7ad66
 ```
 
 #### Create smol IDs from UUIDs or fluuids
@@ -69,12 +69,12 @@ import (
 
 long := fluuid.New()
 fmt.Println(long)
-// Abbe Gardener Alayne the sportsman of Cambria
-// doubles Angelina Blake Canty and 18 healthy ants
+// Allix Ernestus Matthieu the millwright of Cementon 
+// dislikes Nerissa Fairfax Drucilla and 13 old aardvarks
 short, err := fluuid.Smol(long)
 if err != nil {
   fmt.Errorf("error converting uuid to smol: %v", err)
 }
 fmt.Println(short)
-// 25 bad crows fast sang
+// 64 light doves lively ran
 ```
