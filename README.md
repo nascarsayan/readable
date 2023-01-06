@@ -2,6 +2,35 @@
 
 Fluuid is a simple go package for generating fluent UUIDs.
 
+Fluuids are UUIDs that are converted to a grammatically correct sentence. This makes them easy to remember and share, and adds spice to your life.
+You can convert a fluuid to a UUID and vice versa.
+
+```mermaid
+flowchart TD
+U(( UUID )) <--> F(( Fluuid ))
+
+F -- Hash --> S[[ Smol ]]
+U -- Hash --> S
+```
+
+### Examples
+
+#### 128-bit UUIDs
+
+> Corry Allie Evita the steerer of Bascom dreamed Lindsy Gunar Marlette and 2 short mice
+> Mira Corey Cord the morrow of Cedars prays Magdalene Abie Freya and 32 bright alpacas
+> Claire Gordon MacPherson the playmaker of Canova emptys Ilsa Alonzo Deery and 19 cute pheasants
+> Candis Duky Harriman the corncrib of Blevins deserted Caye Gardie Osbert and 21 deep moles
+> Doe Decca Giuliana the plea of Analomink dreams Lyndell Gregorio Mokas and 6 thirsty squirrels
+
+#### 32-bit Smol IDs
+
+> 39 expensive ewes stealthily drove
+> 24 hungry coyotes fondly sang
+> 65 small bees kookily sang
+> 3 high rooks greatly sings
+> 43 low jackals needily sang
+
 ### Features
 
 - Built on UUID v4
@@ -78,3 +107,7 @@ if err != nil {
 fmt.Println(short)
 // 64 light doves lively ran
 ```
+
+### SDKs in other Programming Languages
+
+- JS/TS: https://github.com/Debdut/uuid-readable
