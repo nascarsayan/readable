@@ -17,19 +17,27 @@ U -- Hash --> S
 
 #### 128-bit UUIDs
 
-> Corry Allie Evita the steerer of Bascom dreamed Lindsy Gunar Marlette and 2 short mice
-> Mira Corey Cord the morrow of Cedars prays Magdalene Abie Freya and 32 bright alpacas
-> Claire Gordon MacPherson the playmaker of Canova emptys Ilsa Alonzo Deery and 19 cute pheasants
-> Candis Duky Harriman the corncrib of Blevins deserted Caye Gardie Osbert and 21 deep moles
-> Doe Decca Giuliana the plea of Analomink dreams Lyndell Gregorio Mokas and 6 thirsty squirrels
+> _Corry Allie Evita the steerer of Bascom dreamed Lindsy Gunar Marlette and 2 short mice_
+
+> _Mira Corey Cord the morrow of Cedars prays Magdalene Abie Freya and 32 bright alpacas_
+
+> _Claire Gordon MacPherson the playmaker of Canova emptys Ilsa Alonzo Deery and 19 cute pheasants_
+
+> _Candis Duky Harriman the corncrib of Blevins deserted Caye Gardie Osbert and 21 deep moles_
+
+> _Doe Decca Giuliana the plea of Analomink dreams Lyndell Gregorio Mokas and 6 thirsty squirrels_
 
 #### 32-bit Smol IDs
 
-> 39 expensive ewes stealthily drove
-> 24 hungry coyotes fondly sang
-> 65 small bees kookily sang
-> 3 high rooks greatly sings
-> 43 low jackals needily sang
+> _39 expensive ewes stealthily drove_
+
+> _24 hungry coyotes fondly sang_
+
+> _65 small bees kookily sang_
+
+> _3 high rooks greatly sings_
+
+> _43 low jackals needily sang_
 
 ### Features
 
