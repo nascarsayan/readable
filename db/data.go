@@ -14,10 +14,13 @@ type db struct {
 	Place   place.Places
 }
 
-var Data db
+var Data *db
 
 func InitDB() {
-	Data = db{
+	if Data != nil {
+		return
+	}
+	Data = &db{
 		Animals: animal.GetAnimals(),
 		Grammer: grammer.GetGrammers(),
 		Name:    name.GetNames(),
