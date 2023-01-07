@@ -25,7 +25,7 @@ import (
 )
 
 func TestHashVerifier(t *testing.T) {
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 1000; i++ {
 		uuid := guid.New()
 		sentence, err := fluuid.FromUUID(uuid)
 		if err != nil {
@@ -41,7 +41,6 @@ func TestHashVerifier(t *testing.T) {
 		if !fluuid.VerifySmolWithFluuid(smol, sentence) {
 			t.Errorf("smol is not of fluuid. Smol: %v, UUID: %v, Fluuid: %v", smol, uuid, sentence)
 		}
-		t.Logf("smol is of fluuid. Smol: %v, UUID: %v, Fluuid: %v", smol, uuid, sentence)
 	}
 }
 
