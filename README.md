@@ -5,13 +5,7 @@ Fluuid is a simple go package for generating fluent UUIDs.
 Fluuids are UUIDs that are converted to a grammatically correct sentence. This makes them easy to remember and share, and adds spice to your life.
 You can convert a fluuid to a UUID and vice versa.
 
-```mermaid
-flowchart TD
-U(( UUID )) <--> F(( Fluuid ))
-
-F -- Hash --> S[[ Smol ]]
-U -- Hash --> S
-```
+![Flowchart](./assets/flow.svg)
 
 ### Examples
 
@@ -114,6 +108,14 @@ if err != nil {
 }
 fmt.Println(short)
 // 64 light doves lively ran
+
+// Check if a smol ID is the hash of a fluuid
+fluuid.VerifySmolWithFluuid(short, long) // true
+fluuid.VerifySmolWithFluuid(short, fluuid.New()) // false
+
+// Check if a smol ID is the hash of a UUID
+uid := fluuid.ToUUID(sentence)
+fluuid.VerifySmolWithUUID(short, uid) // true
 ```
 
 ### SDKs in other Programming Languages
