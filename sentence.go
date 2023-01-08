@@ -15,21 +15,21 @@
 // specific language governing permissions and limitations
 // under the License.
 
-// Package fluuid provides a way to convert a byte array to a fluuid string and vice versa.
-package fluuid
+// Package readable provides a way to convert a byte array to a readable string and vice versa.
+package readable
 
 import (
 	"fmt"
 	"strings"
 )
 
-// Converter is a struct that converts a byte array to a fluuid string and vice versa.
+// Converter is a struct that converts a byte array to a readable string and vice versa.
 type Converter struct {
 	schema      *[][]string
 	bitSizeList *[]int
 }
 
-// Marshal converts a byte array to a fluuid string.
+// Marshal converts a byte array to a readable string.
 func (s *Converter) Marshal(data []byte) (string, error) {
 	res := ""
 	bitIdx, byteIdx := 0, 0
@@ -54,12 +54,12 @@ func (s *Converter) Marshal(data []byte) (string, error) {
 		}
 	}
 	if byteIdx != len(data) {
-		return "", fmt.Errorf("data too large to convert to fluuid")
+		return "", fmt.Errorf("data too large to convert to readable")
 	}
 	return res, nil
 }
 
-// Unmarshal converts a fluuid string to a byte array.
+// Unmarshal converts a readable string to a byte array.
 func (s *Converter) Unmarshal(sent string, bytes *[]byte) error {
 	if s == nil || s.schema == nil || s.bitSizeList == nil {
 		return fmt.Errorf("Converter not initialized properly")

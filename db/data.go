@@ -15,14 +15,14 @@
 // specific language governing permissions and limitations
 // under the License.
 
-// Package db contains all the data for the fluuid package.
+// Package db contains all the data for the readable package.
 package db
 
 import (
-	"github.com/nascarsayan/fluuid/db/animal"
-	"github.com/nascarsayan/fluuid/db/grammar"
-	"github.com/nascarsayan/fluuid/db/name"
-	"github.com/nascarsayan/fluuid/db/place"
+	"github.com/nascarsayan/readable/db/animal"
+	"github.com/nascarsayan/readable/db/grammar"
+	"github.com/nascarsayan/readable/db/name"
+	"github.com/nascarsayan/readable/db/place"
 )
 
 type db struct {
@@ -32,7 +32,7 @@ type db struct {
 	Place   place.Places
 }
 
-// Data is the database for the fluuid package.
+// Data is the database for the readable package.
 var Data *db
 
 // InitDB initializes the database.

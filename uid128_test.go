@@ -15,23 +15,23 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package fluuid_test
+package readable_test
 
 import (
 	"testing"
 
 	guid "github.com/google/uuid"
-	"github.com/nascarsayan/fluuid"
+	"github.com/nascarsayan/readable"
 )
 
 func TestInterconversion(t *testing.T) {
 	for i := 0; i < 1000; i++ {
 		uuid := guid.New()
-		sentence, err := fluuid.FromUUID(uuid)
+		sentence, err := readable.FromUUID(uuid)
 		if err != nil {
 			t.Errorf("error converting uuid to sentence: %v", err)
 		}
-		uuidExpected, err := fluuid.ToUUID(sentence)
+		uuidExpected, err := readable.ToUUID(sentence)
 		if err != nil {
 			t.Errorf("error converting sentence to uuid: %v", err)
 		}
@@ -44,9 +44,9 @@ func TestInterconversion(t *testing.T) {
 }
 
 func TestNew(t *testing.T) {
-	sentence, err := fluuid.New()
+	sentence, err := readable.New()
 	if err != nil {
-		t.Errorf("error creating new fluuid: %v", err)
+		t.Errorf("error creating new readable: %v", err)
 	}
 	if len(sentence) == 0 {
 		t.Errorf("sentence is empty")

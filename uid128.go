@@ -15,16 +15,16 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package fluuid
+package readable
 
 import (
 	"github.com/google/uuid"
-	"github.com/nascarsayan/fluuid/db"
+	"github.com/nascarsayan/readable/db"
 )
 
 var uid128 *Converter
 
-// InitUID128 initializes the fluuid package.
+// InitUID128 initializes the readable package.
 func InitUID128() {
 	schema := [][]string{
 		db.Data.Name.First,
@@ -48,7 +48,7 @@ func InitUID128() {
 	uid128 = &Converter{&schema, &bitSizeList}
 }
 
-// New returns a new fluuid.
+// New returns a new readable.
 func New() (string, error) {
 	u := uuid.New()
 	b, err := u.MarshalBinary()
@@ -58,10 +58,10 @@ func New() (string, error) {
 	return uid128.Marshal(b)
 }
 
-// ToUUID converts a fluuid to a uuid.
-func ToUUID(fluuid string) (*uuid.UUID, error) {
+// ToUUID converts a readable to a uuid.
+func ToUUID(readable string) (*uuid.UUID, error) {
 	b := make([]byte, 16)
-	err := uid128.Unmarshal(fluuid, &b)
+	err := uid128.Unmarshal(readable, &b)
 	if err != nil {
 		return nil, err
 	}
@@ -73,7 +73,7 @@ func ToUUID(fluuid string) (*uuid.UUID, error) {
 	return u, nil
 }
 
-// FromUUID converts a uuid to a fluuid.
+// FromUUID converts a uuid to a readable.
 func FromUUID(u uuid.UUID) (string, error) {
 	return uid128.Marshal(u[:])
 }

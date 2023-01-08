@@ -15,13 +15,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package fluuid
+package readable
 
 import (
 	"fmt"
 	"math"
 
-	"github.com/nascarsayan/fluuid/db"
+	"github.com/nascarsayan/readable/db"
 )
 
 func init() {

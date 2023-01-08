@@ -1,4 +1,4 @@
-module github.com/nascarsayan/fluuid
+module github.com/nascarsayan/readable
 
 go 1.16
 

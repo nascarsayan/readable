@@ -1,11 +1,17 @@
-### Fluuid
+### Readable
 
-Fluuid is a simple go package for generating fluent UUIDs.
+Readable is a simple go package for generating fluent UUIDs.
 
-Fluuids are UUIDs that are converted to a grammatically correct sentence. This makes them easy to remember and share, and adds spice to your life.
-You can convert a fluuid to a UUID and vice versa.
+Readables are UUIDs that are converted to a grammatically correct sentence. This makes them easy to remember and share, and adds spice to your life.
+You can convert a readable to a UUID and vice versa.
 
-![Flowchart](./assets/flow.svg)
+```mermaid
+flowchart TD
+U(( UUID )) <--> F(( Readable ))
+
+F -- Hash --> S[[ Smol ]]
+U -- Hash --> S
+```
 
 ### Examples
 
@@ -47,7 +53,7 @@ You can convert a fluuid to a UUID and vice versa.
 ### Installation
 
 ```bash
-go get github.com/nascarsayan/fluuid
+go get github.com/nascarsayan/readable
 ```
 
 ### Usage
@@ -61,33 +67,33 @@ import (
   "fmt"
 
   guid "github.com/google/uuid"
-  "github.com/nascarsayan/fluuid"
+  "github.com/nascarsayan/readable"
 )
 
-sentence := fluuid.New()
+sentence := readable.New()
 fmt.Println(uid) 
 // Dari Findlay Joaquin the pathos of Bandytown 
 // preserves Daisy Cletis Alarice and 29 salty hogs
 
-// + Interconvert between UUIDv4 and fluuid.
+// + Interconvert between UUIDv4 and readable.
 
 uuid := guid.New()
 fmt.Println(uuid)
 // 92e39d12-d0a6-4953-8999-edbf85f7ad66
-sentence = fluuid.FromUUID(uuid)
+sentence = readable.FromUUID(uuid)
 fmt.Println(sentence)
 // Janot Boniface Harriet the contestant of Broseley 
 // preserved Carrissa Gayler Hahnert and 31 windy gnus
 
-hex, err := fluuid.ToUUID(sentence)
+hex, err := readable.ToUUID(sentence)
 if err != nil {
-  fmt.Errorf("error converting fluuid to uuid: %v", err)
+  fmt.Errorf("error converting readable to uuid: %v", err)
 }
 fmt.Println(hex)
 // 92e39d12-d0a6-4953-8999-edbf85f7ad66
 ```
 
-#### Create smol IDs from UUIDs or fluuids
+#### Create smol IDs from UUIDs or readables
 
 ```go
 package main
@@ -95,27 +101,27 @@ package main
 import (
   "fmt"
 
-  "github.com/nascarsayan/fluuid"
+  "github.com/nascarsayan/readable"
 )
 
-long := fluuid.New()
+long := readable.New()
 fmt.Println(long)
 // Allix Ernestus Matthieu the millwright of Cementon 
 // dislikes Nerissa Fairfax Drucilla and 13 old aardvarks
-short, err := fluuid.Smol(long)
+short, err := readable.Smol(long)
 if err != nil {
   fmt.Errorf("error converting uuid to smol: %v", err)
 }
 fmt.Println(short)
 // 64 light doves lively ran
 
-// Check if a smol ID is the hash of a fluuid
-fluuid.VerifySmolWithFluuid(short, long) // true
-fluuid.VerifySmolWithFluuid(short, fluuid.New()) // false
+// Check if a smol ID is the hash of a readable
+readable.VerifySmolWithReadable(short, long) // true
+readable.VerifySmolWithReadable(short, readable.New()) // false
 
 // Check if a smol ID is the hash of a UUID
-uid := fluuid.ToUUID(sentence)
-fluuid.VerifySmolWithUUID(short, uid) // true
+uid := readable.ToUUID(sentence)
+readable.VerifySmolWithUUID(short, uid) // true
 ```
 
 ### SDKs in other Programming Languages

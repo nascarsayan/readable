@@ -15,13 +15,13 @@
 // specific language governing permissions and limitations
 // under the License.
 
-package fluuid
+package readable
 
 import (
 	"hash/fnv"
 
 	"github.com/google/uuid"
-	"github.com/nascarsayan/fluuid/db"
+	"github.com/nascarsayan/readable/db"
 )
 
 var uid32 *Converter
@@ -51,10 +51,10 @@ func createHash(u uuid.UUID) [4]byte {
 	return bytes
 }
 
-// Smol returns a 32-bit hash of the given fluuid.
-func Smol(fluuid string) (string, error) {
+// Smol returns a 32-bit hash of the given readable.
+func Smol(readable string) (string, error) {
 	b := make([]byte, 16)
-	err := uid128.Unmarshal(fluuid, &b)
+	err := uid128.Unmarshal(readable, &b)
 	if err != nil {
 		return "", err
 	}
@@ -72,9 +72,9 @@ func SmolFromUUID(u uuid.UUID) (string, error) {
 	return uid32.Marshal(hash[:])
 }
 
-// VerifySmolWithFluuid verifies that the given smol is the 32-bit hash of the given fluuid.
-func VerifySmolWithFluuid(smol string, fluuid string) bool {
-	smol2, err := Smol(fluuid)
+// VerifySmolWithReadable verifies that the given smol is the 32-bit hash of the given readable.
+func VerifySmolWithReadable(smol string, readable string) bool {
+	smol2, err := Smol(readable)
 	if err != nil {
 		return false
 	}
