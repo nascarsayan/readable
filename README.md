@@ -124,6 +124,6 @@ uid := readable.ToUUID(sentence)
 readable.VerifySmolWithUUID(short, uid) // true
 ```
 
-### SDKs in other Programming Languages
+### Credits
 
 - JS/TS: https://github.com/Debdut/uuid-readable
